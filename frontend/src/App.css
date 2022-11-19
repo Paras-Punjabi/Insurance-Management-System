@@ -1,0 +1,82 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: whitesmoke;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* 
+.front{
+  background-image: url("../public/front.jfif");
+  background-position: center;
+  background-repeat: no-repeat;
+} */
+
+.features{
+  width: 80%;
+  margin: auto;
+  margin-top: 20px;
+  font-size: 12px;
+}
+.features > *{
+  margin:0px  20px;
+}
+
+.form-control {
+  background: #212529;
+  border-color: #545454;
+}
+
+.form-control:focus {
+  background: #212529;
+}
+
+footer {
+  background: #212529;
+}
+
+.images{
+  width: 90vw;
+  height: 90vh;
+}
+
+.links:hover{
+  transform: scale(1.2) translateX(7px);
+}
+
+.forms,.signupForm,.loginForm{
+  width: 70%;
+  margin: auto;
+  margin-top: 20px;
+}
