@@ -17,12 +17,15 @@ all the details about the Customer Policy, Premimum Statements, etc.
 
 ```bash
     cd <repo_folder>
+    
     cd backened 
+    npm install
     npm run start 
 
     cd ..
 
     cd frontend
+    npm install
     npm run start
 ```
  - Go to http://localhost:3000
