@@ -9,12 +9,11 @@ router.post("/create",(req,res)=>{
     let string = `insert into policy(pid,name,duration,description,amount,ramount) values("${pid}","${name}",${duration},"${description}",${amount},${ramount});`
     db.query(string,(err,result)=>{
         if(err){
-            console.log(err.message);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else{
-            res.json(result);
+            res.json({result:result,status:true});
         }
     })
 })
@@ -24,11 +23,11 @@ router.get("/fetch",(req,res)=>{
     db.query(string,(err,result)=>{
         if(err){
             console.log(err.message);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else{
-            res.json(result);
+            res.json({result:result,status:true});
         }
     })
 })

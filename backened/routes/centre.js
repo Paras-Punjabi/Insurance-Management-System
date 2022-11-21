@@ -1,8 +1,6 @@
 const express = require("express")
-const bcrypt = require("bcrypt")
 const router = express.Router()
 const db = require("../database.js")
-const {generateID} = require("../utils.js")
 
 router.post("/modify",(req,res)=>{
     let {cid,pid,aid,amount} = req.body
@@ -10,7 +8,7 @@ router.post("/modify",(req,res)=>{
     db.query(string,(err,result)=>{
         if(err){
             console.log(err);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else{
@@ -19,11 +17,11 @@ router.post("/modify",(req,res)=>{
                 db.query(str,(e,r)=>{
                     if(e){
                         console.log(e);
-                        res.send("Failed..")
+                        res.status(500).json({status:false,message:"Server Error"})
                         return
                     }
                     else{
-                        res.json(r)
+                        res.status(200).json({result:r,status:true})
                         return
                     }
                 })
@@ -34,11 +32,11 @@ router.post("/modify",(req,res)=>{
                 db.query(str,(e,r)=>{
                     if(e){
                         console.log(e);
-                        res.send("Failed..")
+                        res.status(500).json({status:false,message:"Server Error"})
                         return
                     }
                     else{
-                        res.json(r)
+                        res.status(200).json({result:r,status:true})
                         return
                     }
                 })

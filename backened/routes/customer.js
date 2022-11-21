@@ -1,3 +1,4 @@
+require("dotenv").config()
 const express = require("express")
 const router = express.Router()
 const bcrypt = require("bcrypt")
@@ -10,13 +11,11 @@ router.post("/signup",(req,res)=>{
     let str = `select * from customer where email="${email}";`
     db.query(str,async(err,result)=>{
         if(err){
-            console.log(err);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else if(result.length != 0){
-            console.log(result);
-            res.send("Create account with another email..")
+            res.status(400).json({status:false,message:"Create account with another email"})
             return
         }
         else{
@@ -28,13 +27,11 @@ router.post("/signup",(req,res)=>{
             
             db.query(string,(err,result)=>{
                 if(err){
-                    console.log(err);
-                    res.send("Failed..")
+                    res.status(500).json({status:false,message:"Server Error"})
                     return
                 }
                 else{
-                    console.log(result);
-                    res.send("Success..")
+                    res.status(200).json({status:true,message:"User Created"})
                 }
             })
         }
@@ -49,19 +46,20 @@ router.post("/login",(req,res)=>{
     db.query(string,async(err,result)=>{
         if(err){
             console.log(err.message)
-            res.send("Failure..")
+            res.status(500).json({status:false,message:"Server Error"})
         }
         else if(result.length == 0){
-            res.send("Login with correct credentials..")
+            res.status(400).json({status:false,message:"Login with correct credentials"})
+            return
         }
         else{
             let hashPassword = result[0].password
             let isValid = await bcrypt.compare(password,hashPassword);
             if(isValid == false){
-                res.send("Login with correct credentials..")
+                res.status(400).json({status:false,message:"Login with correct credentials"})
             }
             else{
-                res.send("Success..")
+                res.status(200).json({status:true,message:"User LogedIn"})
             }
         }
     })
@@ -76,11 +74,11 @@ router.post("/update",(req,res)=>{
     db.query(string,(err,result)=>{
         if(err){
             console.log(err.message)
-            res.send("Failure..")
+            res.status(500).json({status:false,message:"Server Error"})
         }
         else{
             console.log(result);
-            res.send("Success..")
+            res.status(200).json({status:true,message:"User Updated"})
         }
     })
 })

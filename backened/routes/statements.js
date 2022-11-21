@@ -10,11 +10,11 @@ router.post("/transaction",(req,res)=>{
     db.query(string,(err,result)=>{
         if(err){
             console.log(err);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else{
-            res.json(result)
+            res.status(200).json({result:result,message:"Transaction Created"})
         }
     })
 })
@@ -24,11 +24,11 @@ router.get("/fetch",(req,res)=>{
     db.query(string,(err,result)=>{
         if(err){
             console.log(err);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else{
-            res.json(result)
+            res.status(200).json({result:result,status:true})
         }
     })
 })
@@ -39,11 +39,11 @@ router.post("/changeStatus",(req,res)=>{
     db.query(string,(err,result)=>{
         if(err){
             console.log(err);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else{
-            res.json(result)
+            res.status(200).json({result:result,status:true})
         }
     })
 })

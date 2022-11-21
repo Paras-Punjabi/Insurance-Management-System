@@ -11,12 +11,12 @@ router.post("/signup",(req,res)=>{
     db.query(str,async(err,result)=>{
         if(err){
             console.log(err);
-            res.send("Failed..")
+            res.status(500).json({status:false,message:"Server Error"})
             return
         }
         else if(result.length != 0){
             console.log(result);
-            res.send("Create account with another email..")
+            res.status(400).json({status:false,message:"Create account with another email"})
             return
         }
         else{
@@ -29,12 +29,12 @@ router.post("/signup",(req,res)=>{
             db.query(string,(err,result)=>{
                 if(err){
                     console.log(err);
-                    res.send("Failed..")
+                    res.status(500).json({status:false,message:"Server Error"})
                     return
                 }
                 else{
                     console.log(result);
-                    res.send("Success..")
+                    res.status(200).json({status:true,message:"Agent Created"})
                 }
             })
         }
@@ -49,19 +49,19 @@ router.post("/login",(req,res)=>{
     db.query(string,async(err,result)=>{
         if(err){
             console.log(err.message)
-            res.send("Failure..")
+            res.status(500).json({status:false,message:"Server Error"})
         }
         else if(result.length == 0){
-            res.send("Login with correct credentials..")
+            res.status(400).json({status:false,message:"Login with correct credentials"})
         }
         else{
             let hashPassword = result[0].password
             let isValid = await bcrypt.compare(password,hashPassword);
             if(isValid == false){
-                res.send("Login with correct credentials..")
+                res.status(400).json({status:false,message:"Login with correct credentials"})
             }
             else{
-                res.send("Success..")
+                res.status(200).json({status:true,message:"Agent LogedIn"})
             }
         }
     })
@@ -70,17 +70,16 @@ router.post("/login",(req,res)=>{
 // **Update Data of Agent 
 router.post("/update",(req,res)=>{
     let {aid,name,gender,address,pincode,contact,email} = req.body
-
     let string  = `update agent set name="${name}", gender="${gender}", address="${address}", pincode="${pincode}", contact="${contact}", email="${email}" where aid="${aid}"`
 
     db.query(string,(err,result)=>{
         if(err){
             console.log(err.message)
-            res.send("Failure..")
+            res.status(500).json({status:false,message:"Server Error"})
         }
         else{
             console.log(result);
-            res.send("Success..")
+            res.status(200).json({status:true,message:"Agent Updated"})
         }
     })
 })
