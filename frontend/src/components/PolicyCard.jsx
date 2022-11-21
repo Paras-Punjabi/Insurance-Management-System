@@ -9,14 +9,14 @@ const PolicyCard = () => {
         method:"GET",
         mode:"cors"
       }).then((d)=>{return d.json()}).then((s)=>{
-        setData(s);
+        setData(s.result);
         console.log(s);
       })
   },[])
   return (
     <div className='my-5'>
-      <hr />
-    <h1 className='text-center my-2'>Available Policies</h1>
+      {data && data.length!== 0 && <hr />}
+    {data && data.length !== 0 && <h1 className='text-center my-2'>Available Policies</h1>}
     <div className='d-flex mx-auto flex-row flex-wrap justify-content-center'>
       {data && data.map((item,idx)=>{
     return(
