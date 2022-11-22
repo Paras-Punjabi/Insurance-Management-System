@@ -27,7 +27,8 @@ const Contact = () => {
     setData("")
   }
 
-  async function submitData(){
+  async function submitData(e){
+    e.preventDefault()
     let body = {name,email,data}
     let d = await fetch(`${SERVER_URL}/api/contact`,{
         method:"POST",

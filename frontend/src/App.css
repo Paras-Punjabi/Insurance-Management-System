@@ -75,8 +75,14 @@ footer {
   transform: scale(1.2) translateX(7px);
 }
 
-.forms,.signupForm,.loginForm{
+.forms,.signupForm,.loginForm,.userProlfile,.policy{
   width: 70%;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.optedPolicies{
+  width: 95%;
   margin: auto;
   margin-top: 20px;
 }
