@@ -84,4 +84,19 @@ router.post("/update",(req,res)=>{
     })
 })
 
+router.get("/fetch",(req,res)=>{
+    let str = "select aid,name,contact from agent"
+    db.query(str,(err,result)=>{
+        if(err){
+            console.log(err.message)
+            res.status(500).json({status:false,message:"Server Error"})
+        }
+        else{
+            console.log(result);
+            res.status(200).json({status:true,result:result})
+        }
+    })
+
+})
+
 module.exports = router

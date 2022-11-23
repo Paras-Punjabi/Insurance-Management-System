@@ -29,9 +29,9 @@ const YourPolicies = ({data}) => {
   return (
     <>
     <LogedInNavBar data={data}/>
-    <h1 className='text-center my-3'>Your Policies</h1>
+    <h1 className='text-center my-3'>{policies && policies.length !== 0 ? "Your Policies" : "No Policies"}</h1>
     <div className='optedPolicies my-2'>
-    <Table striped>
+    {policies && policies.length !== 0 && <Table striped>
       <thead>
         <tr>
           <th>Sno.</th>
@@ -40,7 +40,7 @@ const YourPolicies = ({data}) => {
           <th>Agent ID</th>
           <th>Agent Name</th>
           <th>Return Amount</th>
-          <th>Interval(years)</th>
+          <th>Interval(months)</th>
           <th>Payment(per interval)</th>
           <th>Total Amount Paid</th>
         </tr>
@@ -56,7 +56,7 @@ const YourPolicies = ({data}) => {
                   <td>{item.aid}</td>
                   <td>{item.aname}</td>
                   <td><Rupee/>{item.ramount}</td>
-                  <td>{item.duration/12}</td>
+                  <td>{item.duration}</td>
                   <td><Rupee/>{item.amount}</td>
                   <td><Rupee/>{item.total}</td>
                 </tr>
@@ -64,7 +64,7 @@ const YourPolicies = ({data}) => {
           })
         }
       </tbody>
-    </Table>
+    </Table>}
     </div>
     </>
   )

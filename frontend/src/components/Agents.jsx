@@ -28,9 +28,9 @@ const Agents = ({data}) => {
   return (
     <>
     <LogedInNavBar data={data}/>
-    <h1 className='text-center my-3'>Your Agents</h1>
+    <h1 className='text-center my-3'>{agents && agents.length!== 0 ? "Your Agents" : "No Agents"}</h1>
     <div className='optedPolicies my-2'>
-    <Table striped>
+    {agents && agents.length !== 0 && <Table striped>
       <thead>
         <tr>
           <th>Sno.</th>
@@ -61,7 +61,7 @@ const Agents = ({data}) => {
           })
         }
       </tbody>
-    </Table>
+    </Table>}
     </div>
     </>
   )

@@ -35,3 +35,10 @@ all the details about the Customer Policy, Premimum Statements, etc.
  - MYSQL as database
  - React-Bootstrap/Bootstrap5 for styling
  - Express for making server
+  
+### Contributors:
+ - [Paras Punjabi](https://github.com/Paras-Punjabi)
+ - [Sumit Pingale](https://github.com/sspingale)
+ - [Shashwat Shekhar](https://github.com/Shashwat7761)
+ - [Anubhav Kamboj](https://github.com/ANUBHAVKAMBOJ)
+ - [Arjun Singh](https://github.com/Arjun-singh-AS)

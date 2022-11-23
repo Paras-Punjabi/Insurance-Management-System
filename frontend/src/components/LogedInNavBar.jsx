@@ -12,7 +12,7 @@ const LogedInNavBar = ({data}) => {
     }
   return (
      <Navbar className='px-1 py-1' bg="dark" variant="dark">
-          <Navbar.Brand className="mx-2" ><Link style={{"fontFamily":"monospace"}} className='h3 text-white text-decoration-none' to="/">{NAME.split(" ").join("-")}</Link></Navbar.Brand>
+          <Navbar.Brand className="mx-2" ><Link style={{"fontFamily":"monospace"}} className='h3 text-white text-decoration-none' to={`/user/${data.email}/`}>{NAME.split(" ").join("-")}</Link></Navbar.Brand>
 
           <Nav className="me-auto d-flex flex-row">
 

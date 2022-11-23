@@ -29,9 +29,9 @@ const Statements = ({data}) => {
   return (
     <>
     <LogedInNavBar data={data}/>
-    <h1 className='text-center my-3'>Your Transactions</h1>
+    <h1 className='text-center my-3'>{statements && statements.length !== 0 ? "Your Transactions" : "No Statements"}</h1>
     <div className='optedPolicies my-2'>
-    <Table striped>
+    {statements && statements.length !== 0 && <Table striped>
       <thead>
         <tr>
           <th>Sno.</th>
@@ -62,7 +62,7 @@ const Statements = ({data}) => {
           })
         }
       </tbody>
-    </Table>
+    </Table>}
     </div>
     </>
   )
